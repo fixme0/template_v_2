@@ -94,20 +94,6 @@ module.exports = {
         }
       },
       // js
-
-      {
-        test: /\.(png|jpg|gif|jpeg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'img/',
-            }  
-          }
-        ]
-       },
-      //  img
     ]
   }
 
