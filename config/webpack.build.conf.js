@@ -50,16 +50,45 @@ module.exports = merge({
         ]
        },
       //  img
+
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          extractCSS: true,
+          postcss: {
+            plugins: postCssPlugins
+          },
+          loaders: {
+            js: {
+               loader: 'babel-loader',
+               options: {
+                   presets: ['babel-preset-env']
+               }
+            }
+          }
+        }
+      }
+
     ]
   },
   plugins: [
     new ExtractTextPlugin({
       filename: 'css/[name].css'
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         warnings: false
       }
-    }) 
+    })
   ]
 }, baseConf);

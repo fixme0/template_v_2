@@ -24,7 +24,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(dist),
+    new CleanWebpackPlugin(dist, { root: path.resolve(__dirname , '..'), verbose: true }),
     new SpriteLoaderPlugin({
       plainSprite: true
     }),

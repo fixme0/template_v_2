@@ -42,6 +42,24 @@ module.exports = merge({
        },
       //  img
 
+      {
+          test: /\.vue$/,
+          loader: 'vue-loader',
+          options: {
+            postcss: {
+              plugins: postCssPlugins
+            },
+            loaders: {
+              js: {
+                 loader: 'babel-loader',
+                 options: {
+                     presets: ['babel-preset-env']
+                 }
+              }
+            }
+          }
+      }
+      // vue
     ]
   },
   plugins: [
@@ -57,5 +75,5 @@ module.exports = merge({
     inline: true,
     // hot: true
   },
-  devtool: 'source-map'
+  devtool: 'eval-source-map'
 }, baseConfig);
